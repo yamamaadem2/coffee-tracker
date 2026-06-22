@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Coffee Order Tracker</title>
+  <link rel="icon" href="/favicon.ico" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/static/css/styles.css" />
+</head>
+<body>
+  <div class="page">
+    <header class="header">
+      <div class="header__brand">
+        <span class="header__icon" aria-hidden="true">☕</span>
+        <div>
+          <h1>Coffee Order Tracker</h1>
+          <p class="header__tagline">Log orders, track streaks, see what's brewing.</p>
+        </div>
+      </div>
+    </header>
+
+    <main class="layout">
+      <section class="card card--form" aria-labelledby="log-order-heading">
+        <h2 id="log-order-heading">Log an order</h2>
+        <form id="order-form" class="order-form">
+          <div class="field">
+            <label for="customer-name">Customer name</label>
+            <input id="customer-name" name="customer_name" type="text" required placeholder="Layla" autocomplete="name" />
+          </div>
+          <div class="field">
+            <label for="drink">Drink</label>
+            <input id="drink" name="drink" type="text" required placeholder="Spanish Latte" list="drink-suggestions" />
+            <datalist id="drink-suggestions">
+              <option value="Espresso"></option>
+              <option value="Latte"></option>
+              <option value="Spanish Latte"></option>
+              <option value="Cappuccino"></option>
+              <option value="Mocha"></option>
+              <option value="Americano"></option>
+              <option value="Cold Brew"></option>
+            </datalist>
+          </div>
+          <div class="field">
+            <label for="order-date">Date <span class="field__hint">(optional)</span></label>
+            <input id="order-date" name="order_date" type="date" />
+          </div>
+          <button type="submit" class="btn btn--primary">Log order</button>
+        </form>
+        <p id="form-message" class="message" role="status" aria-live="polite"></p>
+      </section>
+
+      <section class="card card--streak" aria-labelledby="streak-heading">
+        <h2 id="streak-heading">Customer streak</h2>
+        <form id="streak-form" class="streak-form">
+          <div class="field">
+            <label for="streak-customer">Customer name</label>
+            <input id="streak-customer" name="customer_name" type="text" required placeholder="Layla" list="customer-suggestions" />
+            <datalist id="customer-suggestions"></datalist>
+          </div>
+          <button type="submit" class="btn btn--secondary">Check streak</button>
+        </form>
+        <div id="streak-result" class="streak-result hidden" aria-live="polite"></div>
+        <p id="streak-message" class="message" role="status" aria-live="polite"></p>
+      </section>
+
+      <section class="card card--customers" aria-labelledby="customers-heading">
+        <div class="card__header-row">
+          <h2 id="customers-heading">Customers</h2>
+          <button type="button" id="refresh-customers" class="btn btn--ghost btn--small">Refresh</button>
+        </div>
+        <ul id="customers-list" class="customers-list">
+          <li class="customers-list__empty">Loading customers…</li>
+        </ul>
+      </section>
+
+      <section class="card card--popular" aria-labelledby="popular-heading">
+        <div class="card__header-row">
+          <h2 id="popular-heading">Popular drinks</h2>
+          <button type="button" id="refresh-popular" class="btn btn--ghost btn--small">Refresh</button>
+        </div>
+        <ol id="popular-list" class="popular-list">
+          <li class="popular-list__empty">No orders yet — log one to get started.</li>
+        </ol>
+      </section>
+
+      <section class="card card--orders card--wide" aria-labelledby="orders-heading">
+        <div class="card__header-row">
+          <h2 id="orders-heading">Recent orders</h2>
+          <button type="button" id="refresh-orders" class="btn btn--ghost btn--small">Refresh</button>
+        </div>
+        <div class="table-wrap">
+          <table class="orders-table">
+            <thead>
+              <tr>
+                <th scope="col">Customer</th>
+                <th scope="col">Drink</th>
+                <th scope="col">Date</th>
+              </tr>
+            </thead>
+            <tbody id="orders-body">
+              <tr>
+                <td colspan="3" class="orders-table__empty">Loading orders…</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <a href="/docs" target="_blank" rel="noopener">API docs</a>
+    </footer>
+  </div>
+
+  <script src="/static/js/app.js" type="module"></script>
+</body>
+</html>
