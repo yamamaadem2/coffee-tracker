@@ -78,7 +78,7 @@ coffee-tracker/
 
 ```bash
 # 1. Clone and enter the project
-git clone https://github.com/<your-username>/coffee-tracker.git
+git clone https://github.com/yamamaadem2/coffee-tracker.git
 cd coffee-tracker
 
 # 2. Create a virtual environment (recommended)
@@ -144,12 +144,6 @@ and edge cases like unknown customers and broken streaks.
   logic, `TestClient` + in-memory SQLite for API endpoints.
 - How to add **query-parameter validation** (pagination, limits) and return
   **human-readable validation errors** instead of raw framework output.
-
-## Resume bullet (example)
-
-> Built a FastAPI coffee order tracker with streak calculation logic, SQLAlchemy
-> persistence, 21 pytest tests, and a vanilla JS frontend — separating pure
-> business logic from the API layer for independent unit testing.
 
 ## Possible next steps
 
